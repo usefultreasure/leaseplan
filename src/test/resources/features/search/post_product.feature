@@ -6,13 +6,13 @@ Feature: Search for the product
 
 
   Scenario:
-    When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/apple"
+    When he calls endpoint "/apple"
     Then he sees the results displayed for "Apple"
 
   Scenario:
-    When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/orange"
+    When he calls endpoint "/orange"
     Then he sees the results displayed for "Mango"
 
   Scenario:
-    When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/car"
+    When he calls endpoint "/car"
     Then he does not see the results

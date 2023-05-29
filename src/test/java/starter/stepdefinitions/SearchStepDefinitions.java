@@ -9,9 +9,10 @@ import static org.hamcrest.Matchers.*;
 
 public class SearchStepDefinitions {
 
+    String baseURL = "https://waarkoop-server.herokuapp.com/api/v1/search/demo";
     @When("he calls endpoint {string}")
     public void heCallsEndpoint(String arg0) {
-        SerenityRest.given().get(arg0);
+        SerenityRest.given().get(baseURL+arg0);
     }
 
     @Then("he does not see the results")

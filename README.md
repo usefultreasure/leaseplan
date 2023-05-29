@@ -2,10 +2,10 @@
 LeasePlan assignment
 
 # Requirements (obligatory):
-• Refactor the given project
-• Make it run correctly on Gitlab CI
-• Use BDD format: Cucumber/Gherkin
-• Required framework: Java Serenity + Maven
+## Refactor the given project
+## Make it run correctly on Gitlab CI
+## Use BDD format: Cucumber/Gherkin
+## Required framework: Java Serenity + Maven
 
 ## Get the code
 
@@ -15,6 +15,104 @@ Git:
     cd leaseplan
 
 
+# Refactoring
+post_product.feature
+```
+  Scenario:
+    When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/orange"
+    Then he sees the results displayed for apple
+    When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/apple"
+    Then he sees the results displayed for mango
+    When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/car"
+    Then he doesn not see the results
+
+```
+To
+```
+  Scenario:
+    When he calls endpoint "/apple"
+    Then he sees the results displayed for "Apple"
+
+  Scenario:
+    When he calls endpoint "/orange"
+    Then he sees the results displayed for "Mango"
+
+  Scenario:
+    When he calls endpoint "/car"
+    Then he does not see the results
+```
+
+And SearchStepDefinitions.java
+```java
+public class SearchStepDefinitions {
+
+    @Steps
+    public CarsAPI carsAPI;
+
+    @When("he calls endpoint {string}")
+    public void heCallsEndpoint(String arg0) {
+        SerenityRest.given().get(arg0);
+    }
+
+    @Then("he sees the results displayed for apple")
+    public void heSeesTheResultsDisplayedForApple() {
+        restAssuredThat(response -> response.statusCode(200));
+    }
+
+    @Then("he sees the results displayed for mango")
+    public void heSeesTheResultsDisplayedForMango() {
+        restAssuredThat(response -> response.body("title", contains("mango")));
+    }
+
+    @Then("he doesn not see the results")
+    public void he_Doesn_Not_See_The_Results() {
+        restAssuredThat(response -> response.body("error", contains("True")));
+    }
+}
+```
+
+TO
+
+```java
+public class SearchStepDefinitions {
+
+    String baseURL = "https://waarkoop-server.herokuapp.com/api/v1/search/demo";
+    @When("he calls endpoint {string}")
+    public void heCallsEndpoint(String arg0) {
+        SerenityRest.given().get(baseURL+arg0);
+    }
+
+    @Then("he does not see the results")
+    public void he_Does_Not_See_The_Results() {
+        restAssuredThat(response -> response.statusCode(404));
+        restAssuredThat(response -> response.body("detail.error", is(true)));
+    }
+
+    @Then("he sees the results displayed for {string}")
+    public void heSeesTheResultsDisplayedFor(String arg0) {
+        restAssuredThat(response -> response.statusCode(200));
+        restAssuredThat(response -> response.body("title", hasItem(containsString(arg0))));
+    }
+}
+```
+
+## Modifications
+1. Removed obsolete code
+2. Use baseURL instead of long variable in feature file
+3. Use three test scenarios in three test cases instead of one
+4. Fix the verification for all steps to use proper verification method like 
+```java
+restAssuredThat(response -> response.body("title", hasItem(containsString(arg0))));
+```
+instead of 
+```java
+restAssuredThat(response -> response.body("title", contains("mango")));
+```
+
+
+
+
+# To Run
 ## Use Maven
 
 Open a command window and run:
