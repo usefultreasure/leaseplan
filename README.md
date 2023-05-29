@@ -1,278 +1,195 @@
-# Getting started with Serenity and Cucumber
+# Getting started
+LeasePlan assignment
 
-Serenity BDD is a library that makes it easier to write high quality automated acceptance tests, with powerful reporting and living documentation features. It has strong support for both web testing with Selenium, and API testing using RestAssured.
+# Requirements (obligatory):
+• Refactor the given project
+• Make it run correctly on Gitlab CI
+• Use BDD format: Cucumber/Gherkin
+• Required framework: Java Serenity + Maven
 
-Serenity strongly encourages good test automation design, and supports several design patterns, including classic Page Objects, the newer Lean Page Objects/ Action Classes approach, and the more sophisticated and flexible Screenplay pattern.
+## Get the code
 
-The latest version of Serenity supports Cucumber 5.5.
+Git:
 
-## The starter project
-The best place to start with Serenity and Cucumber is to clone or download the starter project on Github ([https://github.com/serenity-bdd/serenity-cucumber-starter](https://github.com/serenity-bdd/serenity-cucumber-starter)). This project gives you a basic project setup, along with some sample tests and supporting classes. There are two versions to choose from. The master branch uses a more classic approach, using action classes and lightweight page objects, whereas the **[screenplay](https://github.com/serenity-bdd/serenity-cucumber-starter/tree/screenplay)** branch shows the same sample test implemented using Screenplay.
+    git clone https://github.com/usefultreasure/leaseplan
+    cd leaseplan
 
-### The project directory structure
-The project has build scripts for both Maven and Gradle, and follows the standard directory structure used in most Serenity projects:
-```Gherkin
-src
-  + main
-  + test
-    + java                        Test runners and supporting code
-    + resources
-      + features                  Feature files
-     + search                  Feature file subdirectories 
-             search_by_keyword.feature
+
+## Use Maven
+
+Open a command window and run:
+
+    mvn clean verify
+
+## Use Gradle
+
+Open a command window and run:
+
+    gradlew test 
+
+## Viewing the reports
+
+Both of the commands provided above will produce a Serenity test report in the `target/site/serenity` directory. Go take a look!
+
+# Output command:
+```
+"C:\Program Files\Java\jdk-11\bin\java.exe" -Dmaven.multiModuleProjectDirectory=C:\leaseplan-example -Djansi.passthrough=true "-Dmaven.home=C:\Program Files\JetBrains\IntelliJ IDEA 2023.1.2\plugins\maven\lib\maven3" "-Dclassworlds.conf=C:\Program Files\JetBrains\IntelliJ IDEA 2023.1.2\plugins\maven\lib\maven3\bin\m2.conf" "-Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2023.1.2\plugins\maven\lib\maven-event-listener.jar" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2023.1.2\lib\idea_rt.jar=53318:C:\Program Files\JetBrains\IntelliJ IDEA 2023.1.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\JetBrains\IntelliJ IDEA 2023.1.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2023.1.2\plugins\maven\lib\maven3\boot\plexus-classworlds.license" org.codehaus.classworlds.Launcher -Didea.version=2023.1.2 install
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------< net.serenitybdd.starter:cucumber-starter >--------------
+[INFO] Building Serenity BDD project using Cucumber 1.0.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/io/cucumber/messages/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/io/cucumber/messages/maven-metadata.xml (2.4 kB at 7.8 kB/s)
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ cucumber-starter ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\leaseplan-example\src\main\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ cucumber-starter ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ cucumber-starter ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ cucumber-starter ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:3.0.0-M5:test (default-test) @ cucumber-starter ---
+[INFO] Tests are skipped.
+[INFO]
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ cucumber-starter ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO]
+[INFO] --- maven-failsafe-plugin:3.0.0-M5:integration-test (default) @ cucumber-starter ---
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+12:27:10.160 [main] INFO  i.c.core.plugin.SerenityReporter - Running feature from file:///C:/leaseplan-example/src/test/resources/features/search/post_product.feature
+
+12:27:10.301 [main] INFO   -
+
+-------------------------------------------------------------------------------------
+     _______. _______ .______       _______ .__   __.  __  .___________.____    ____ 
+    /       ||   ____||   _  \     |   ____||  \ |  | |  | |           |\   \  /   / 
+|   (----`|  |__   |  |_)  |    |  |__   |   \|  | |  | `---|  |----` \   \/   /  
+\   \    |   __|  |      /     |   __|  |  . `  | |  |     |  |       \_    _/   
+.----)   |   |  |____ |  |\  \----.|  |____ |  |\   | |  |     |  |         |  |     
+|_______/    |_______|| _| `._____||_______||__| \__| |__|     |__|         |__|
+
+News and tutorials at http://www.serenity-bdd.info                                  
+Documentation at https://wakaleo.gitbooks.io/the-serenity-book/content/             
+Join the Serenity Community on Gitter: https://gitter.im/serenity-bdd/serenity-core
+Serenity BDD Support and Training at http://serenity-bdd.info/#/trainingandsupport
+-------------------------------------------------------------------------------------
+
+
+12:27:10.301 [main] INFO   - Test Suite Started: Search for the product
+
+
+
+3
+Scenarios (
+3 passed
+)
+
+
+6
+Steps (
+6 passed
+)
+
+
+0m
+5.521s
+
+
+
+
+
+
+12:27:15.737 [pool-2-thread-1] INFO  n.t.core.reports.ReportService - net.thucydides.core.reports.json.JSONTestOutcomeReporter@67110f71: Generating report for test outcome: Search for the product:
+
+12:27:15.782 [pool-3-thread-1] INFO  n.t.core.reports.ReportService - net.thucydides.core.reports.html.HtmlAcceptanceTestReporter@2ff15f8c: Generating report for test outcome: Search for the product:
+
+12:27:16.269 [main] INFO  i.c.core.plugin.SerenityReporter - Cleanup test resources for URI file:///C:/leaseplan-example/src/test/resources/features/search/post_product.feature
+
+[INFO] Running Search for the product
+
+Scenario:                                                                                 # src/test/resources/features/search/post_product.feature:8
+12:27:10.420 [pool-2-thread-1] INFO  i.c.core.plugin.SerenityReporter - Running feature from file:///C:/leaseplan-example/src/test/resources/features/search/post_product.feature
+12:27:10.505 [pool-2-thread-1] INFO   -
+  _____   ___   ___   _____     ___   _____     _     ___   _____   ___   ___  
+|_   _| | __| / __| |_   _|   / __| |_   _|   /_\   | _ \ |_   _| | __| |   \
+| |   | _|  \__ \   | |     \__ \   | |    / _ \  |   /   | |   | _|  | |) |
+|_|   |___| |___/   |_|     |___/   |_|   /_/ \_\ |_|_\   |_|   |___| |___/
+
+(search-for-the-product;)
+--------------------------------------------------------------------------------
+12:27:10.505 [pool-2-thread-1] INFO  n.thucydides.core.model.TestOutcome - SetUserStory Search for the product
+12:27:10.522 [pool-2-thread-1] INFO  n.thucydides.core.model.TestOutcome - SetUserStory Search for the product
+When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/apple" # starter.stepdefinitions.SearchStepDefinitions.heCallsEndpoint(java.lang.String)
+Then he sees the results displayed for "Apple"                                          # starter.stepdefinitions.SearchStepDefinitions.heSeesTheResultsDisplayedFor(java.lang.String)
+12:27:14.680 [pool-2-thread-1] INFO   -
+  _____   ___   ___   _____     ___     _     ___   ___   ___   ___  
+|_   _| | __| / __| |_   _|   | _ \   /_\   / __| / __| | __| |   \
+| |   | _|  \__ \   | |     |  _/  / _ \  \__ \ \__ \ | _|  | |) |
+|_|   |___| |___/   |_|     |_|   /_/ \_\ |___/ |___/ |___| |___/
+
+
+----------------------------------------------------------------------
+
+Scenario:                                                                                  # src/test/resources/features/search/post_product.feature:12
+12:27:14.680 [pool-2-thread-1] INFO  i.c.core.plugin.SerenityReporter - Running feature from file:///C:/leaseplan-example/src/test/resources/features/search/post_product.feature
+When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/orange" # starter.stepdefinitions.SearchStepDefinitions.heCallsEndpoint(java.lang.String)
+Then he sees the results displayed for "Mango"                                           # starter.stepdefinitions.SearchStepDefinitions.heSeesTheResultsDisplayedFor(java.lang.String)
+
+Scenario:                                                                               # src/test/resources/features/search/post_product.feature:16
+12:27:15.440 [pool-2-thread-1] INFO  i.c.core.plugin.SerenityReporter - Running feature from file:///C:/leaseplan-example/src/test/resources/features/search/post_product.feature
+When he calls endpoint "https://waarkoop-server.herokuapp.com/api/v1/search/demo/car" # starter.stepdefinitions.SearchStepDefinitions.heCallsEndpoint(java.lang.String)
+Then he does not see the results                                                      # starter.stepdefinitions.SearchStepDefinitions.he_Does_Not_See_The_Results()
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.336 s - in Search for the product
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- serenity-maven-plugin:2.6.0:aggregate (serenity-reports) @ cucumber-starter ---
+[INFO] Test results for 0 tests generated in 747 ms in directory: file:/C:/leaseplan-example/target/site/serenity/
+[INFO] -----------------------------------------
+[INFO]  SERENITY TESTS : SUCCESS
+[INFO] -----------------------------------------
+[INFO] | Tests executed         | 0
+[INFO] | Tests passed           | 0
+[INFO] | Tests failed           | 0
+[INFO] | Tests with errors      | 0
+[INFO] | Tests compromised      | 0
+[INFO] | Tests pending          | 0
+[INFO] | Tests ignored/skipped  | 0
+[INFO] ------------------------ | --------------
+[INFO] | Total Duration         | 000ms
+[INFO] | Fastest test took      | 000ms
+[INFO] | Slowest test took      | 000ms
+[INFO] -----------------------------------------
+[INFO]
+[INFO] SERENITY REPORTS
+[INFO]   - Full Report: file:///C:/leaseplan-example/target/site/serenity/index.html
+[INFO]
+[INFO] --- maven-failsafe-plugin:3.0.0-M5:verify (default) @ cucumber-starter ---
+[INFO]
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ cucumber-starter ---
+[INFO] Installing C:\leaseplan-example\target\cucumber-starter-1.0.0-SNAPSHOT.jar to C:\Users\w128206\.m2\repository\net\serenitybdd\starter\cucumber-starter\1.0.0-SNAPSHOT\cucumber-starter-1.0.0-SNAPSHOT.jar
+[INFO] Installing C:\leaseplan-example\pom.xml to C:\Users\w128206\.m2\repository\net\serenitybdd\starter\cucumber-starter\1.0.0-SNAPSHOT\cucumber-starter-1.0.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.266 s
+[INFO] Finished at: 2023-05-29T12:27:18+02:00
+[INFO] ------------------------------------------------------------------------
+
+Process finished with exit code 0
 ```
 
-Serenity 2.2.13 introduced integration with WebdriverManager to download webdriver binaries.
-
-## The sample scenario
-Both variations of the sample project uses the sample Cucumber scenario. In this scenario, Sergey (who likes to search for stuff) is performing a search on the internet:
-
-```Gherkin
-Feature: Search by keyword
-
-  Scenario: Searching for a term
-    Given Sergey is researching things on the internet
-    When he looks up "Cucumber"
-    Then he should see information about "Cucumber"
-```
-
-### The Screenplay implementation
-The sample code in the master branch uses the Screenplay pattern. The Screenplay pattern describes tests in terms of actors and the tasks they perform. Tasks are represented as objects performed by an actor, rather than methods. This makes them more flexible and composable, at the cost of being a bit more wordy. Here is an example:
-```java
-    @Given("{actor} is researching things on the internet")
-    public void researchingThings(Actor actor) {
-        actor.wasAbleTo(NavigateTo.theWikipediaHomePage());
-    }
-
-    @When("{actor} looks up {string}")
-    public void searchesFor(Actor actor, String term) {
-        actor.attemptsTo(
-                LookForInformation.about(term)
-        );
-    }
-
-    @Then("{actor} should see information about {string}")
-    public void should_see_information_about(Actor actor, String term) {
-        actor.attemptsTo(
-                Ensure.that(WikipediaArticle.HEADING).hasText(term)
-        );
-    }
-```
-
-Screenplay classes emphasise reusable components and a very readable declarative style, whereas Lean Page Objects and Action Classes (that you can see further down) opt for a more imperative style.
-
-The `NavigateTo` class is responsible for opening the Wikipedia home page:
-```java
-public class NavigateTo {
-    public static Performable theWikipediaHomePage() {
-        return Task.where("{0} opens the Wikipedia home page",
-                Open.browserOn().the(WikipediaHomePage.class));
-    }
-}
-```
-
-The `LookForInformation` class does the actual search:
-```java
-public class LookForInformation {
-    public static Performable about(String searchTerm) {
-        return Task.where("{0} searches for '" + searchTerm + "'",
-                Enter.theValue(searchTerm)
-                        .into(SearchForm.SEARCH_FIELD)
-                        .thenHit(Keys.ENTER)
-        );
-    }
-}
-```
-
-In Screenplay, we keep track of locators in light weight page or component objects, like this one:
-```java
-class SearchForm {
-    static Target SEARCH_FIELD = Target.the("search field")
-                                       .locatedBy("#searchInput");
-
-}
-```
-
-The Screenplay DSL is rich and flexible, and well suited to teams working on large test automation projects with many team members, and who are reasonably comfortable with Java and design patterns. 
-
-### The Action Classes implementation.
-
-A more imperative-style implementation using the Action Classes pattern can be found in the `action-classes` branch. The glue code in this version looks this this:
-
-```java
-    @Given("^(?:.*) is researching things on the internet")
-    public void i_am_on_the_Wikipedia_home_page() {
-        navigateTo.theHomePage();
-    }
-
-    @When("she/he looks up {string}")
-    public void i_search_for(String term) {
-        searchFor.term(term);
-    }
-
-    @Then("she/he should see information about {string}")
-    public void all_the_result_titles_should_contain_the_word(String term) {
-        assertThat(searchResult.displayed()).contains(term);
-    }
-```
-
-These classes are declared using the Serenity `@Steps` annotation, shown below:
-```java
-    @Steps
-    NavigateTo navigateTo;
-
-    @Steps
-    SearchFor searchFor;
-
-    @Steps
-    SearchResult searchResult;
-```
-
-The `@Steps`annotation tells Serenity to create a new instance of the class, and inject any other steps or page objects that this instance might need.
-
-Each action class models a particular facet of user behaviour: navigating to a particular page, performing a search, or retrieving the results of a search. These classes are designed to be small and self-contained, which makes them more stable and easier to maintain.
-
-The `NavigateTo` class is an example of a very simple action class. In a larger application, it might have some other methods related to high level navigation, but in our sample project, it just needs to open the DuckDuckGo home page:
-```java
-public class NavigateTo {
-
-    WikipediaHomePage homePage;
-
-    @Step("Open the Wikipedia home page")
-    public void theHomePage() {
-        homePage.open();
-    }
-}
-```
-
-It does this using a standard Serenity Page Object. Page Objects are often very minimal, storing just the URL of the page itself:
-```java
-@DefaultUrl("https://wikipedia.org")
-public class WikipediaHomePage extends PageObject {}
-```
-
-The second class, `SearchFor`, is an interaction class. It needs to interact with the web page, and to enable this, we make the class extend the Serenity `UIInteractionSteps`. This gives the class full access to the powerful Serenity WebDriver API, including the `$()` method used below, which locates a web element using a `By` locator or an XPath or CSS expression:
-```java
-public class SearchFor extends UIInteractionSteps {
-
-    @Step("Search for term {0}")
-    public void term(String term) {
-        $(SearchForm.SEARCH_FIELD).clear();
-        $(SearchForm.SEARCH_FIELD).sendKeys(term, Keys.ENTER);
-    }
-}
-```
-
-The `SearchForm` class is typical of a light-weight Page Object: it is responsible uniquely for locating elements on the page, and it does this by defining locators or occasionally by resolving web elements dynamically.
-```java
-class SearchForm {
-    static By SEARCH_FIELD = By.cssSelector("#searchInput");
-}
-```
-
-The last step library class used in the step definition code is the `SearchResult` class. The job of this class is to query the web page, and retrieve a list of search results that we can use in the AssertJ assertion at the end of the test. This class also extends `UIInteractionSteps` and
-```java
-public class SearchResult extends UIInteractionSteps {
-    public String displayed() {
-        return find(WikipediaArticle.HEADING).getText();
-    }
-}
-```
-
-The `WikipediaArticle` class is a lean Page Object that locates the article titles on the results page:
-```java
-public class WikipediaArticle {
-    public static final By HEADING =  By.id("firstHeading");
-}
-```
-
-The main advantage of the approach used in this example is not in the lines of code written, although Serenity does reduce a lot of the boilerplate code that you would normally need to write in a web test. The real advantage is in the use of many small, stable classes, each of which focuses on a single job. This application of the _Single Responsibility Principle_ goes a long way to making the test code more stable, easier to understand, and easier to maintain.
-
-## Executing the tests
-To run the sample project, you can either just run the `CucumberTestSuite` test runner class, or run either `mvn verify` or `gradle test` from the command line.
-
-By default, the tests will run using Chrome. You can run them in Firefox by overriding the `driver` system property, e.g.
-```json
-$ mvn clean verify -Ddriver=firefox
-```
-Or
-```json
-$ gradle clean test -Pdriver=firefox
-```
-
-The test results will be recorded in the `target/site/serenity` directory.
-
-## Generating the reports
-Since the Serenity reports contain aggregate information about all of the tests, they are not generated after each individual test (as this would be extremenly inefficient). Rather, The Full Serenity reports are generated by the `serenity-maven-plugin`. You can trigger this by running `mvn serenity:aggregate` from the command line or from your IDE.
-
-They reports are also integrated into the Maven build process: the following code in the `pom.xml` file causes the reports to be generated automatically once all the tests have completed when you run `mvn verify`?
-
-```
-             <plugin>
-                <groupId>net.serenity-bdd.maven.plugins</groupId>
-                <artifactId>serenity-maven-plugin</artifactId>
-                <version>${serenity.maven.version}</version>
-                <configuration>
-                    <tags>${tags}</tags>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>serenity-reports</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-```
-
-## Simplified WebDriver configuration and other Serenity extras
-The sample projects both use some Serenity features which make configuring the tests easier. In particular, Serenity uses the `serenity.conf` file in the `src/test/resources` directory to configure test execution options.  
-### Webdriver configuration
-The WebDriver configuration is managed entirely from this file, as illustrated below:
-```java
-webdriver {
-    driver = chrome
-}
-headless.mode = true
-
-chrome.switches="""--start-maximized;--test-type;--no-sandbox;--ignore-certificate-errors;
-                   --disable-popup-blocking;--disable-default-apps;--disable-extensions-file-access-check;
-                   --incognito;--disable-infobars,--disable-gpu"""
-
-```
-
-Serenity uses WebDriverManager to download the WebDriver binaries automatically before the tests are executed.
-
-### Environment-specific configurations
-We can also configure environment-specific properties and options, so that the tests can be run in different environments. Here, we configure three environments, __dev__, _staging_ and _prod_, with different starting URLs for each:
-```json
-environments {
-  default {
-    webdriver.base.url = "https://duckduckgo.com"
-  }
-  dev {
-    webdriver.base.url = "https://duckduckgo.com/dev"
-  }
-  staging {
-    webdriver.base.url = "https://duckduckgo.com/staging"
-  }
-  prod {
-    webdriver.base.url = "https://duckduckgo.com/prod"
-  }
-}
-```
-
-You use the `environment` system property to determine which environment to run against. For example to run the tests in the staging environment, you could run:
-```json
-$ mvn clean verify -Denvironment=staging
-```
-
-See [**this article**](https://johnfergusonsmart.com/environment-specific-configuration-in-serenity-bdd/) for more details about this feature.
-
-## Want to learn more?
-For more information about Serenity BDD, you can read the [**Serenity BDD Book**](https://serenity-bdd.github.io/theserenitybook/latest/index.html), the official online Serenity documentation source. Other sources include:
-* **[Byte-sized Serenity BDD](https://www.youtube.com/channel/UCav6-dPEUiLbnu-rgpy7_bw/featured)** - tips and tricks about Serenity BDD
-* For regular posts on agile test automation best practices, join the **[Agile Test Automation Secrets](https://www.linkedin.com/groups/8961597/)** groups on [LinkedIn](https://www.linkedin.com/groups/8961597/) and [Facebook](https://www.facebook.com/groups/agiletestautomation/)
-* [**Serenity BDD Blog**](https://johnfergusonsmart.com/category/serenity-bdd/) - regular articles about Serenity BDD
